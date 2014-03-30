@@ -23,8 +23,10 @@
     BOOL isadd;
 
 }
-@property(retain ,nonatomic)ImagePickupViewController * imagePkViewC;
-@property(retain,nonatomic)UIActionSheet *sheet;
+
+@property(retain,nonatomic)IBOutlet UIImageView *homeBgV;
+@property(retain,nonatomic)IBOutlet UIButton *startBtn;
+@property(retain,nonatomic)ImagePickupViewController * imagePkViewC;
 @property(retain,nonatomic) UIImagePickerController *picker;
 -(IBAction)clickPhotoPickup:(id)sender;//相册
 -(IBAction)clickset:(id)sender;

@@ -138,7 +138,7 @@
     [topView addSubview:backBtn];
     
     UIButton * nextBtn=[UIButton buttonWithType:UIButtonTypeCustom];
-    [nextBtn setFrame:CGRectMake(277,15, 30, 15)];
+    [nextBtn setFrame:CGRectMake(270,13, 37, 19)];
     //    [nextBtn setTitle:@"分享" forState:UIControlStateNormal];
     [nextBtn setImage:[UIImage imageNamed:@"shareBtn_ImagePick.png"] forState:UIControlStateNormal];
     [nextBtn addTarget:self action:@selector(clickSave:) forControlEvents:UIControlEventTouchUpInside];
@@ -166,7 +166,6 @@
     
     [pS release];
     [self.view removeFromSuperview];
-  
     
 }
 -(void)dealloc

@@ -29,7 +29,7 @@
 #define MAX_IMAGEPIX 640.0          // max pix 640.0px
 int Start_y_gemotry;//410标签容器
 
-//#define IS_IPHONE_5 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
+#define IS_IPHONE_5 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
 
 #define gap_btn_bar 80
 
@@ -511,16 +511,8 @@ int Start_y_gemotry;//410标签容器
 {//添加标签到view
     printf("model click");
     int flag_color=[sender tag];
-    [self clearNullLable];
-//    if (textLable!=nil) {
-//        printf("存在");
-//        if ([textLable._textView.text isEqualToString:@"@"]||[textLable._textView.text isEqualToString:@""]) {
-//            [textLable removeFromSuperview];
-//            textLable=nil;
-//        }
-//       
-//    }
-    
+    [self clearNullLable];//清楚空标签
+ 
     float offset=scrollView.contentOffset.y;
     
     printf("test==%d,",flag_model);
@@ -542,14 +534,24 @@ int Start_y_gemotry;//410标签容器
    
     if(flag_model==0)
     {
+        NSShadow * shadow = [[NSShadow alloc] init];
+        // 定义阴影的颜色
+        shadow.shadowColor = [UIColor blackColor];
+        // 定义阴影的偏移位置
+        shadow.shadowOffset = CGSizeMake(0, 0);
+        shadow.shadowBlurRadius=3;
         [textLable._textView becomeFirstResponder];
         NSDictionary *dict=@{
                             NSFontAttributeName:[UIFont systemFontOfSize:12.0],
                             NSForegroundColorAttributeName:[UIColor whiteColor],
-                             NSStrokeWidthAttributeName:@2,
-                             NSStrokeColorAttributeName:[UIColor blackColor]
+                             //NSStrokeWidthAttributeName:@2,
+                             //NSStrokeColorAttributeName:[UIColor blackColor],
+                            NSShadowAttributeName:shadow,
+                            NSVerticalGlyphFormAttributeName:@(0)
                              };//@3
-        textLable._textView.attributedText =[[NSAttributedString alloc]initWithString:@"@" attributes:dict];
+        textLable._textView.attributedText =[[NSAttributedString alloc]initWithString:@"" attributes:dict];
+        
+        [shadow release];
     }
    
 }
@@ -604,7 +606,6 @@ int Start_y_gemotry;//410标签容器
         for (int j=0; j<test2.subviews.count; ++j) {
             UIView * test3=[test2.subviews objectAtIndex:j];
             [test3 removeFromSuperview];
-//            [test3 release];
         }
         
         [test1 removeFromSuperview];

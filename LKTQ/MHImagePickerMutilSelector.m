@@ -48,7 +48,7 @@
     navigationController.navigationBar.translucent = YES;
     [navigationController.navigationBar setTintColor:[UIColor colorWithRed:223/255.0 green:110/255.0 blue:118/255.0 alpha:1]];
     
-    
+    [[navigationController.view.subviews objectAtIndex:0] setFrame:CGRectMake(0, 0, 320, kScreenHeight-131)];
     for (UINavigationItem *item in navigationController.navigationBar.subviews)
     {
 
@@ -59,7 +59,6 @@
             UIButton *button = (UIButton *)item;
             [button setHidden:YES];
         }
-       
     }
     if (navigationController.viewControllers.count>=2) { // 当前为图片列表
        
@@ -105,6 +104,7 @@
         cell=[[UITableViewCell alloc] initWithFrame:CGRectZero];
         cell.selectionStyle=UITableViewCellSelectionStyleNone;
         [cell setBackgroundColor:[UIColor clearColor]];
+       
         UIView* rotateView=[[UIView alloc] initWithFrame:CGRectMake(0, 0, 80 , 80)];
         [rotateView setBackgroundColor:[UIColor blueColor]];
         rotateView.transform=CGAffineTransformMakeRotation(M_PI * 90 / 180);
@@ -274,9 +274,20 @@
 -(void)dealloc
 {
     printf("相册dealloc");
+    for (int i=0; i<self.view.subviews.count; ++i) {
+        UIView * _v=[self.view.subviews objectAtIndex:i];
+        for (int j=0; j<_v.subviews.count; ++j) {
+            UIView * _v_v=[_v.subviews objectAtIndex:j];
+            [_v_v removeFromSuperview];
+        }
+        [_v removeFromSuperview];
+    }
+    
     [delegate release],delegate=nil;
     [pics removeAllObjects];//add
     [pics release];
+    
+    [imagePicker.view removeFromSuperview];
     [imagePicker release],imagePicker=nil;
     [super dealloc];
 }
@@ -301,7 +312,7 @@
     if (arry!=Nil) {//添加
         [imagePickerMutilSelector addImageToArray:arry];
     }
-    UIImagePickerController* picker=[[UIImagePickerController alloc] init] ;
+    UIImagePickerController* picker=[[UIImagePickerController alloc] init]  ;
     picker.delegate=imagePickerMutilSelector;//将UIImagePicker的代理指向到imagePickerMutilSelector
     [picker setAllowsEditing:NO];
     picker.sourceType=UIImagePickerControllerSourceTypePhotoLibrary;
@@ -310,6 +321,7 @@
     imagePickerMutilSelector.imagePicker=picker;//使imagePickerMutilSelector得知其控制的UIImagePicker实例，为释放时需要。
 
     [picker.view addSubview:imagePickerMutilSelector.selectedPan];
+    [imagePickerMutilSelector.selectedPan release];
     
     [vc presentViewController:picker animated:YES completion:NULL];
 }

@@ -25,11 +25,15 @@
     float _height_textv=0;
     float _width_textv=640;
    
-    NSMutableArray* _centerA=[self saveCenterArray:imageViewArr];//保存原始中点
+//    NSMutableArray* _centerA=[self saveCenterArray:imageViewArr];//保存原始中点
+    NSMutableArray *_centerA=[[NSMutableArray alloc]init];
+    
     int margin=8;//图片间隔
     for (int i=0; i< num; ++i) {
         testImageV=[imageViewArr objectAtIndex:i];
         testTextEditV=[textViewArr objectAtIndex:i];
+        //保存位置，大小
+        [self saveCenterArray:_centerA withView:testImageV];
         
         //重新设置图片view 和文字view的y坐标，然后添加到容器panner View中
         [testImageV setFrame:CGRectMake(0, _height,testImageV.frame.size.width*2,testImageV.frame.size.height*2)];//图片放大二倍
@@ -56,30 +60,52 @@
     [self adjustIamgeViewAndTextView:imageViewArr textView:textViewArr WithCenterOrdinal:_centerA];//还原图片大小
     [self adjustTextLableTosmall:textPanner];//还原文字view
     
+    [_centerA removeAllObjects];//add
+    [_centerA release];//add
+    
     [panner release];
     [textPanner release];
     return  img;
 
 }
-//保存拼接前的位置和大小
-+(NSMutableArray*)saveCenterArray:(NSMutableArray *)imageViewArr
+
+//new 保存拼接前的位置和大小
++(NSMutableArray*)saveCenterArray:(NSMutableArray *)centerArray  withView:(UIView*)imageV
 {
-    UIImageView *imageV;
-    NSMutableArray *centerArray=[[NSMutableArray alloc]init];
-
-    for (int i=0; i<imageViewArr.count; ++i) {
-        NSMutableDictionary *centerTemp=[[NSMutableDictionary alloc]init];
-        imageV=[imageViewArr objectAtIndex:i];
-        [centerTemp setObject:[NSNumber numberWithFloat:imageV.frame.origin.x] forKey:@"x"];
-         [centerTemp setObject:[NSNumber numberWithFloat:imageV.frame.origin.y] forKey:@"y"];
-        [centerTemp setObject:[NSNumber numberWithFloat:imageV.frame.size.width] forKey:@"w"];
-         [centerTemp setObject:[NSNumber numberWithFloat:imageV.frame.size.height] forKey:@"h"];
-        [centerArray addObject:centerTemp];
-    }
-
+ 
+    NSMutableDictionary *centerTemp=[[NSMutableDictionary alloc]init];
+    [centerTemp setObject:[NSNumber numberWithFloat:imageV.frame.origin.x] forKey:@"x"];
+    [centerTemp setObject:[NSNumber numberWithFloat:imageV.frame.origin.y] forKey:@"y"];
+    [centerTemp setObject:[NSNumber numberWithFloat:imageV.frame.size.width] forKey:@"w"];
+    [centerTemp setObject:[NSNumber numberWithFloat:imageV.frame.size.height] forKey:@"h"];
+    [centerArray addObject:centerTemp];
+    [centerTemp release];
+    
     return centerArray;
-
+    
 }
+
+////保存拼接前的位置和大小
+//+(NSMutableArray*)saveCenterArray:(NSMutableArray *)imageViewArr
+//{
+//    UIImageView *imageV;
+//    NSMutableArray *centerArray=[[NSMutableArray alloc]init];
+//
+//    for (int i=0; i<imageViewArr.count; ++i) {
+//        NSMutableDictionary *centerTemp=[[NSMutableDictionary alloc]init];
+//        imageV=[imageViewArr objectAtIndex:i];
+//        [centerTemp setObject:[NSNumber numberWithFloat:imageV.frame.origin.x] forKey:@"x"];
+//         [centerTemp setObject:[NSNumber numberWithFloat:imageV.frame.origin.y] forKey:@"y"];
+//        [centerTemp setObject:[NSNumber numberWithFloat:imageV.frame.size.width] forKey:@"w"];
+//         [centerTemp setObject:[NSNumber numberWithFloat:imageV.frame.size.height] forKey:@"h"];
+//        [centerArray addObject:centerTemp];
+//        [centerTemp release];
+//        
+//    }
+//
+//    return centerArray;
+//
+//}
 /*生成图片同时会放进沙盒目录ImageMerged,默认名字Merged.png,用于后面分享获取*/
 +(UIImage *)writeToImageFromView:(UIView *)pan//写成图片同时会放进沙盒目录ImageMerged,默认名字Merged.png,用于后面分享获取
 {
@@ -105,6 +131,8 @@
         }
     }];
 
+    [library release];
+
 }
 /* 循环保存单独图片到本地LKTQ目录*/
 +(void)saveAllImageOneByOne:(NSMutableArray *)imageViewArr textViewArray:(NSMutableArray*)textViewArr
@@ -127,6 +155,7 @@
         }];
         
     }
+    [library release];
 
 }
 
@@ -164,6 +193,7 @@
     [self changeTextLableTosmall:testTextEditV];//还原标签
     [testImageV removeFromSuperview];
     [testTextEditV removeFromSuperview];
+   
     [panner release];//
     
     return img;
@@ -228,8 +258,6 @@
 //还原大小图片view和文字层的view大小和位置
 +(void)adjustIamgeViewAndTextView:(NSMutableArray *)imageViewArr textView:(NSMutableArray *)textViewArr WithCenterOrdinal:(NSMutableArray *)rectA
 {
-    
- 
     int num=[imageViewArr count];
     UIImageView *testImageV;
     UIView * testTextEditV;

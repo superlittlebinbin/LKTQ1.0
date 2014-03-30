@@ -50,11 +50,13 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     
-    self.rootViewController=[[HomeViewController alloc]init];
+//    self.rootViewController=[[HomeViewController alloc]init];
+     self.rootViewController=[[HomeViewController alloc]initWithNibName:@"HomeViewController" bundle:Nil];
+    
     
     self.window.rootViewController=rootViewController;
     [self.window addSubview:rootViewController.view];
-    [rootViewController clickPhotoPickup:nil];//相册打开
+//    [rootViewController clickPhotoPickup:nil];//相册打开
     [self.window makeKeyAndVisible];
     return YES;
 }

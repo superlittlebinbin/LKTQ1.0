@@ -16,20 +16,18 @@
 @end
 
 @implementation HomeViewController
-@synthesize sheet,picker;
+@synthesize picker;
 @synthesize imagePkViewC;
--(id)init
+@synthesize startBtn,homeBgV;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super init];
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
         show=NO;
         isadd=NO;
         [self barControl];
-       
     }
     return self;
-
 }
 -(void)barControl
 {
@@ -56,7 +54,7 @@
     return YES;//隐藏为YES，显示为NO
 //    return show;
 }
--(void)clickPhotoPickup:(id)sender//相册
+-(IBAction)clickPhotoPickup:(id)sender//相册
 {
 //    //方法一
 //    QBImagePickerController *imagePickerController = [[QBImagePickerController alloc] init];
@@ -71,8 +69,17 @@
 //    [navigationController release];
     
     //方法二
-    NSArray* arr=(NSArray*)sender;
-    [MHImagePickerMutilSelector showInViewController:self withArr:arr];
+    UIButton* btn=(UIButton*)sender;
+    if ([btn isKindOfClass:[UIButton class]]) {
+        NSArray* arr=nil;
+        [MHImagePickerMutilSelector showInViewController:self withArr:arr];
+    }
+   
+    else
+    {
+        NSArray* arr=(NSArray*)sender;
+        [MHImagePickerMutilSelector showInViewController:self withArr:arr];
+    }
     
 }
 -(void)imagePickerMutilSelectorDidGetImages:(NSArray*)imageArray
@@ -82,68 +89,29 @@
     [self jumpToImagePkVC:imageA];
 
 }
-//
-//- (void)imagePickerController:(QBImagePickerController *)imagePickerController didFinishPickingMediaWithInfo:(id)info
-//{
-//    printf("选择完毕");
-//    NSArray *mediaInfoArray = (NSArray *)info;
-//    NSLog(@"选择了 %d 图片", mediaInfoArray.count);
-//    [self dismissViewControllerAnimated:YES completion:NULL];
-//    [self jumpToImagePkVC:mediaInfoArray];
-//    
-//}
-//- (void)imagePickerControllerDidCancel:(QBImagePickerController *)imagePickerController
-//{
-//    printf("picker cancell");//取消
-//    [self dismissViewControllerAnimated:YES completion:NULL];
-//}
+
 -(void)jumpToImagePkVC:(NSArray*)array//跳转页面
 {
     printf("跳转页面");
     NSArray* array_temp;
-    
-//    if (imagePkViewC) {
-//        if (imagePkViewC.addIS) {
-//           array_temp=[imagePkViewC addImageToImageArray:array];
-//            printf("test图片===%d,",array_temp.count);
-//            [imagePkViewC setAddIS:NO];
-//            isadd=YES;
-//        }
-//        else
-//        {
-//            array_temp=array;
-//        
-//        }
-//        
-//    }
-//    else
-//    {
-        array_temp=array;
-    
-    
-//    }
-    
+    array_temp=array;
      printf("最后图片===%d,",array_temp.count);
     self.imagePkViewC=[[ImagePickupViewController alloc] initWithNibName:@"ImagePickupView" bundle:nil];
     
-//    if (isadd) {
-//        [imagePkViewC addUpdateImageArray:array_temp];
-//        isadd=NO;
-//    }
-//    else
-//    {
-        [imagePkViewC updateImageArray:array_temp];
-    
-//    }
+    [imagePkViewC updateImageArray:array_temp];
     imagePkViewC.delegate=self;
     [self.view addSubview:imagePkViewC.view];
     [imagePkViewC.view release];//add
+    
   
 }
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    if (IS_IPHONE_5) {
+        [homeBgV setImage:[UIImage imageNamed:@"homeBg2.png"]];
+    }
 }
 
 -(void)didReceiveMemoryWarning
@@ -153,6 +121,6 @@
 }
 -(void)dealloc
 {
-    [super dealloc ];
+    [super dealloc];
 }
 @end

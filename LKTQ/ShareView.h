@@ -28,7 +28,6 @@
     NSMutableArray * textEditVArr;
     UIImage *img_Merged;
     NSString* pathImageM;
-    PositionSwitch * positionSwitch;
     ShareType shareTypeSocial;
     
     UIImageView * bg;
@@ -36,10 +35,10 @@
     
 }
 
-@property(retain,nonatomic)id<AccessHomeDelegate>delegate;
-@property(nonatomic,retain)  NSString* pathImageM;//合成图路径
-@property(nonatomic,retain) UIImage *img_Merged;//社会化分享容器
-@property(nonatomic,retain) UIView  *pannerShareView;//社会化分享容器
+@property(assign,nonatomic)id<AccessHomeDelegate>delegate;
+@property(nonatomic,assign)  NSString* pathImageM;//合成图路径
+@property(nonatomic,assign) UIImage *img_Merged;//社会化分享容器
+@property(nonatomic,assign) UIView  *pannerShareView;//社会化分享容器
 - (id)initWithFrame:(CGRect)frame  withImageVA:(NSMutableArray*)imageVA withTextEditVA:(NSMutableArray *)textEVA;
 
  

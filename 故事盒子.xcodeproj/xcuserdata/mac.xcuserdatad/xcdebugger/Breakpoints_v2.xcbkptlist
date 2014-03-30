@@ -443,22 +443,6 @@
             timestampString = "417372402.607514"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
-            landmarkName = "+saveCenterArray:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LKTQ/CameraCustom.m"
-            timestampString = "417372402.607514"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
             startingLineNumber = "16"
             endingLineNumber = "16"
             landmarkName = "+photoMerge:textViewArray:"
@@ -536,11 +520,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LKTQ/ShareView.m"
-            timestampString = "417344757.12237"
+            timestampString = "417889625.617372"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "373"
-            endingLineNumber = "373"
+            startingLineNumber = "370"
+            endingLineNumber = "370"
             landmarkName = "-dealloc"
             landmarkType = "5">
          </BreakpointContent>
@@ -552,12 +536,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LKTQ/ExtraLayerView.m"
-            timestampString = "417592081.707796"
+            timestampString = "417894219.37129"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "638"
-            endingLineNumber = "638"
-            landmarkName = "-dealloc"
+            startingLineNumber = "631"
+            endingLineNumber = "631"
+            landmarkName = "-clearView"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -568,13 +552,43 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LKTQ/MHImagePickerMutilSelector.m"
-            timestampString = "417534417.891905"
+            timestampString = "417893645.786118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "299"
-            endingLineNumber = "299"
-            landmarkName = "+showInViewController:withArr:"
+            startingLineNumber = "304"
+            endingLineNumber = "304"
+            landmarkName = "-addImageToArray:"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[MHImagePickerMutilSelector addImageToArray:]"
+                  moduleName = "&#25925;&#20107;&#30418;&#23376;"
+                  urlString = "file://localhost/Users/mac/Desktop/LKTQ1.0-master/LKTQ/MHImagePickerMutilSelector.m"
+                  timestampString = "417893646.201352"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "304"
+                  endingLineNumber = "304"
+                  offsetFromSymbolStart = "187">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[MHImagePickerMutilSelector addImageToArray:]"
+                  moduleName = "&#25925;&#20107;&#30418;&#23376;"
+                  urlString = "file://localhost/Users/mac/Desktop/LKTQ1.0-master/LKTQ/MHImagePickerMutilSelector.m"
+                  timestampString = "417893646.201647"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "304"
+                  endingLineNumber = "304"
+                  offsetFromSymbolStart = "309">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -664,12 +678,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LKTQ/ExtraLayerView.m"
-            timestampString = "417592175.713033"
+            timestampString = "417894219.37129"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "599"
-            endingLineNumber = "599"
-            landmarkName = "-clearView"
+            startingLineNumber = "593"
+            endingLineNumber = "593"
+            landmarkName = "-resignTextLable"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -695,13 +709,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LKTQ/ShareView.m"
-            timestampString = "417615119.3991"
+            filePath = "LKTQ/HomeViewController.m"
+            timestampString = "417886317.639497"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "209"
-            endingLineNumber = "209"
-            landmarkName = "-initCustomShareInter"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "-clickPhotoPickup:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LKTQ/HomeViewController.m"
+            timestampString = "417889741.528305"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
+            landmarkName = "-clickPhotoPickup:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

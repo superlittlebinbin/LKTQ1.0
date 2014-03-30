@@ -95,7 +95,7 @@
 }
 -(void)initImage:(int)tag withflag:(int)index
 {
-    float top=25;
+    float top=22;//25
     float left=28;
     float bottom=25;
     float right=28;
